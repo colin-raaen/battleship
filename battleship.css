@@ -1,0 +1,272 @@
+
+body {
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.game-title{
+    margin: 20px;
+}
+
+.game-instructions {
+    margin: 10px 15%;
+}
+
+/* styling so boards can be positioned to the right of ships to position */
+#gameplay-container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    max-width: 60%; /* Use percentage of viewport */
+    border: 1px solid; /* Set border to transparent initially */
+    border-radius: 15px; 
+    padding: 20px 0px;
+    margin-bottom: 40px;
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.06); 
+}
+
+#start-button{
+    margin: auto; /* center element on the page */
+    margin-top: 15px; /* spacing above */
+    margin-bottom: 30px; /* spacing below */
+}
+
+.ships-to-place{
+    display: flex; /* changed from grid to flex box */
+    flex-wrap: wrap; /* prevents overlap */
+    align-items: flex-start; /* Align items to the start (top) */
+    justify-content: center; /* Center content horizontally */
+    width: 30%; /* width of vertical column */
+}
+
+.ship-container { /* Container for each ship group (title and ship) */
+    display: grid; /* Style as a grid */
+    grid-template-rows: auto 1fr; /* One row for header, one for ship */
+    align-items: start; /* Center content vertically */
+    justify-content: center;
+    text-align: center;
+    margin: 8px; /* Space between ships */
+}
+
+#ships-to-place-header {
+    grid-column: span 3;  /* allow header to span across 2 columns across top of div */
+    margin-bottom: 10px;
+}
+
+/* "Your Ships" header */
+#your-ships {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.ship-name {
+    margin: 0px;
+}
+
+.player-ship{
+    margin: 10px;
+    display: grid; /* Nested grid for ship name and cells */
+    grid-template-rows: auto 1fr; /* One row for name, one for cells */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+}
+
+#player-carrier {
+    display: grid;
+    grid-template-columns: repeat(2, 20px);  /* Ensure 5 columns for 5x2 */
+    margin: 20px;
+}
+
+.cell.placement {
+    cursor: move;
+}
+
+.generated-board-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 40%;
+    margin: auto;
+    
+}
+
+/* Div containing both player and computer boards, styling to position side by side */
+.generated-board{
+    text-align: center;
+}
+
+#player-generated-board {
+    margin-bottom: 30px; /* override default to provide more space between player board and computer board */
+}
+
+/* styling of actual board div to create 14x14 cell boards */
+.board {
+    display: grid;
+    grid-template-columns: repeat(14, 20px);
+    gap: 1px;
+    margin: 10px;
+    width: 300px;
+}
+
+.cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+    border: 1px solid #333;
+    cursor: pointer;
+}
+
+.ship-placed {
+    background-color: rgb(255, 230, 170);
+}
+
+.carrier{
+    background-color: rgb(255, 230, 170);
+}
+
+.battleship{
+    background-color: rgb(255, 191, 170);
+}
+
+.cruiser{
+    background-color: rgb(170, 255, 187);
+}
+
+.submarine{
+    background-color: rgb(186, 170, 255);
+}
+
+.destroyer{
+    background-color: rgb(170, 251, 255);
+}
+
+.ship-hit {
+    background-color: rgb(255,0,0);
+}
+
+.ship-missed {
+    background-color: rgb(0,157,196);
+}
+
+button {
+    margin: 20px;
+    font-size: 16px;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Align items vertically in the center */
+    flex-wrap: wrap;
+    width: 30%;
+}
+
+h1 {
+    color: #333;
+}
+
+.alert {
+    position: absolute; /* won't push other elements up and down, absoute */
+    top: 66.5%; /* position from top of page */
+    width: 55%;
+    left: 50%; /* position in the middle of the page */
+    transform: translateX(-50%); /* position in the middle of the page */
+}
+
+/* styling for turn and reset button */
+#turn-button,
+#reset-button {
+    width: 50%;
+    margin: 10px;
+}
+
+.legend-container{
+    margin: 30px;
+    width: 60%;
+}
+
+/* styling so legend items on two rows and don't overlap */
+.legend-item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    width: 100%;
+}
+
+.legend-key {
+    margin-left: 10px;
+}
+
+/* Footer Styling */
+.footer {
+    bottom: 0;
+    width: 100%;
+    height: 25px;
+    background-color: white;
+  }
+  
+  .footer-top {
+    text-align: center;
+    font-size: 12px;
+    padding: 10px;
+    font-family: Helvetica, Arial, sans-serif;
+  }  
+
+/* Format and styling as width of viewport decreases, before mobile */
+@media only screen and (max-width: 1360px) {
+    #gameplay-container{
+        max-width: 90%; /* Use percentage of viewport */
+    }
+    .ships-to-place{
+        grid-gap: 10px; /* Gap between boxes */
+    }
+
+    .alert {
+        top: 69.5%; /* position from top of page */
+        width: 90%;
+    }
+
+    .legend-container{
+        width: 60%;
+    }
+}
+
+/* Mobile view formatting and styling */
+@media only screen and (max-width: 950px) {
+    .game-title{
+        margin: 20px 2%;;
+    }
+
+    .game-instructions {
+        margin: 10px 2%;
+    }
+
+    #gameplay-container{
+        max-width: 85%; /* Use percentage of viewport */
+        display: grid;
+    }
+
+    .buttons-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    .ships-to-place{
+        width: 100%;
+    }
+
+    .alert {
+        top: 71.5%; /* position from top of page */
+        width: 90%;
+    }
+
+    .legend-container{
+        width: 40%;
+    }
+}
